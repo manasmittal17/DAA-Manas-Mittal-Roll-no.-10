@@ -1,0 +1,45 @@
+#include<stdio.h>
+int main()
+{
+    int t,k,c=0,s=0;
+    printf("Enter the number of test cases: ");
+    scanf("%d",&t);
+    for(int i=0;i<t;i++)
+    {
+        int n,arr[100];
+        printf("Enter number of array elements: ");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++)
+        {
+            scanf("%d",&arr[i]);
+        }
+        for(int i=1;i<n;i++){
+            int temp=arr[i];
+            for(int j=i-1;j>=0;j--)
+            {
+                for(k=0;k<=i;k++)
+                {
+                    if(arr[k]==temp)
+                        break;
+                }
+                if(arr[j]>temp)
+                {
+                    int t1=arr[j];
+                    arr[j]=temp;
+                    arr[k]=t1;
+                    s++;
+                }
+                c++;
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            printf("%d ",arr[i]);
+        }
+        printf("\n");
+        printf("Shifts: ");
+        printf("%d\n",s);
+        printf("Comparisons: ");
+        printf("%d\n",c);
+    }
+}
