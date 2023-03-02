@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+int firstoccurrence(int arr[],int low,int high,int k){
+    int s=low;
+    int end=high-1;
+    int ans=-1;
+    int mid=s+(end-s)/2;
+    while(s<=end){
+        if(arr[mid]==k){
+            ans=mid;
+            end=mid-1;
+        }
+        else if(arr[mid]>k){
+            end=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+        mid=s+(end-s)/2;
+    }
+    return ans;
+}
+int lastoccurrence(int arr[],int low,int high,int k){
+    int s=low;
+    int end=high-1;
+    int ans=-1;
+    int mid=s+(end-s)/2;
+    while(s<=end){
+        if(arr[mid]==k){
+            ans=mid;
+            s=mid+1;
+        }
+        else if(arr[mid]>k){
+            end=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+        mid=s+(end-s)/2;
+    }
+    return ans;
+}
+int main()
+{
+    int t,n;
+    cin>>t;
+    for(int j=0;j<t;j++){
+        cin>>n;
+        int array[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>array[i];
+        }
+        int key;
+        cin>>key;
+        int a=firstoccurrence(array,0,n,key);
+        int b=lastoccurrence(array,0,n,key);
+        cout<<key<<" "<<"-"<<" "<<(b-a)+1<<endl;
+    }
+}
