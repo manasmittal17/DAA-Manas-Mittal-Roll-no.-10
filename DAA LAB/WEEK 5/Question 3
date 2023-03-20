@@ -1,0 +1,31 @@
+#include<stdio.h>
+int main(){
+    int t;
+    scanf("%d",&t);
+    for(int i=0;i<t;i++){
+        int m,n;
+        scanf("%d %d",&m,&n);
+        int a[m],b[n];
+        for(int i=0;i<m;i++){
+            scanf("%d",&a[i]);
+        }
+        for(int i=0;i<n;i++){
+            scanf("%d",&b[i]);
+        }
+        int i1=0,j1=0;
+        while(i1<m&&j1<n){
+            if(a[i1]==b[j1]){
+                printf("%d ",a[i1]);
+                i1++;
+                j1++;
+            }
+            else if(a[i1]>b[j1]){
+                j1++;
+            }
+            else{
+                i1++;
+            }
+        }
+        printf("\n");
+    }
+}
