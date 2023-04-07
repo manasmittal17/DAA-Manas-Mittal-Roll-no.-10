@@ -1,33 +1,38 @@
-#include<stdio.h>
+#include <stdio.h>
 int main()
 {
-    int t,n,k,f=0,s;
+    int t, n, k, f = 0, s;
     printf("Enter the number of test cases: ");
-    scanf("%d",&t);
-    for(int i=0;i<t;i++)
+    scanf("%d", &t);
+    for (int i = 0; i < t; i++)
     {
-        scanf("%d",&n);
+        printf("Enter number of array elements: ");
+        scanf("%d", &n);
         int arr[n];
-        for(int j=0;j<n;j++)
+        printf("Enter the array: ");
+        for (int j = 0; j < n; j++)
         {
-            scanf("%d",&arr[j]);
+            scanf("%d", &arr[j]);
         }
-        scanf("%d",&k);
-        for(s=0;s<n;s++)
+        printf("Enter the key: ");
+        scanf("%d", &k);
+        for (s = 0; s < n; s++)
         {
-            if(k==arr[s])
+            if (k == arr[s])
             {
                 printf("Present ");
-                printf("%d",s+1);
-                f=1;
+                printf("%d", s + 1);
+                f = 1;
+                printf("\n");
                 break;
             }
         }
-        if(f==0)
+        if (f == 0)
         {
             printf("Not Present ");
-            printf("%d",s);
+            printf("%d", s);
+            printf("\n");
         }
-        f=0;
+        f = 0;
     }
 }
