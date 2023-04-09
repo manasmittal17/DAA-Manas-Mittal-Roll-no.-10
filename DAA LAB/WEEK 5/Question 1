@@ -1,26 +1,39 @@
-#include<stdio.h>
-#include<limits.h>
-int main(){
+#include <stdio.h>
+#include <limits.h>
+int main()
+{
     int t;
-    scanf("%d",&t);
-    for(int i=0;i<t;i++){
+    printf("Enter the number of test cases: ");
+    scanf("%d", &t);
+    for (int i = 0; i < t; i++)
+    {
         int n;
-        scanf("%d",&n);
+        printf("Enter the size: ");
+        scanf("%d", &n);
         char a[n];
-        scanf("%s",a);
-        int b[26]={0};
-        for(int i=0;i<n;i++){
-            b[a[i]-'a']++;
+        scanf("%s", a);
+        int b[26] = {0};
+        for (int i = 0; i < n; i++)
+        {
+            b[a[i] - 'a']++;
         }
-        int max=INT_MIN,s;
-        for(int i=0;i<n;i++){
-            if(b[i]>max){
-                max=b[i];
-                s=i;
-                
+        int max = INT_MIN, s;
+        for (int i = 0; i < 26; i++)
+        {
+            if (b[i] > max)
+            {
+                max = b[i];
+                s = i;
             }
         }
-        printf("%c - %d",a[s],max);
-        printf("\n");
+        if (max == 1)
+        {
+            printf("No duplicates present.\n");
+        }
+        else
+        {
+            printf("%c - %d", 'a' + s, max);
+            printf("\n");
+        }
     }
 }
