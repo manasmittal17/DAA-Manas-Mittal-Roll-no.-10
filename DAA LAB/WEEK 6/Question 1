@@ -1,0 +1,50 @@
+#include<iostream>
+#include<vector>
+#include<stack>
+using namespace std;
+void addedge(vector<int> graph[],int s,int e){
+    graph[s].push_back(e);
+}
+bool dfs(vector<int> graph[],int v,int start,int end){
+    bool visited[v]={false};
+    stack<int> st;
+    st.push(start);
+    vector<int>::iterator it;
+    while(!st.empty()){
+        int s=st.top();
+        st.pop();
+        if(visited[s]!=true){
+            visited[s]=true;
+        }
+        for(it=graph[s].begin();it!=graph[s].end();it++){
+            if(visited[*it]!=true){
+                st.push(*it);
+            }
+        }
+    }
+    return visited[end];
+}
+int main(){
+    int e,v;
+    cout<<"Enter number of vertices in the graph: ";
+    cin>>v;
+    cout<<"Enter number of edges in the graph: ";
+    cin>>e;
+    vector<int> graph[v];
+    for(int i=0;i<e;i++){
+        int s,e;
+        cin>>s>>e;
+        addedge(graph,s,e);
+    }
+    //print
+    int start,end;
+    cin>>start;
+    cin>>end;
+    bool ans=dfs(graph,v,start,end);
+    if(ans){
+        cout<<"Yes Path Exists.";
+    }
+    else{
+        cout<<"No Such Path Exists.";
+    }
+}
