@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool isBipartite(vector<vector<int>> graph)
+{
+    int nodes = graph.size();    
+    vector<int> side(nodes, -1); 
+    bool is_bipartite = true;    
+    queue<int> q;
+    for (int st = 0; st < nodes; ++st)
+    {
+        if (side[st] == -1)
+        {
+            q.push(st);
+            side[st] = 0;
+            while (!q.empty())
+            {
+                int par = q.front();
+                q.pop();
+                for (int child : graph[par])
+                {
+                    if (side[child] == -1)
+                    {
+                        side[child] = 1 - side[par];
+                        q.push(child);
+                    }
+                    else
+                    {
+                        if (side[child] == side[par])
+                            is_bipartite = false;
+                    }
+                }
+            }
+        }
+    }
+
+    return is_bipartite;
+}
+
+int main()
+{
+    vector<vector<int>> graph{
+        {0,1,1,0,0}, 
+        {1,0,1,1,1},    
+        {1,1,0,1,0}, 
+        {0,1,0,1,0}     
+    };
+
+    cout << (isBipartite(graph) ? "Yes Bipartite" : "Not Bipartite") << endl;
+}
